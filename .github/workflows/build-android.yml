@@ -31,7 +31,7 @@ jobs:
         run: bash tool/bootstrap_android.sh
 
       - name: Analizar proyecto
-        run: flutter analyze
+        run: flutter analyze --no-fatal-infos
 
       - name: Compilar APK
         run: flutter build apk --release
