@@ -76,7 +76,7 @@ class _ReaderScreenState extends State<ReaderScreen> {
     controller.dispose();
     connectivity.dispose();
     pdfViewerController.removeListener(_pdfChanged);
-    pdfViewerController.dispose();
+    
     super.dispose();
   }
 
