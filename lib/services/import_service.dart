@@ -15,7 +15,7 @@ class ImportService {
   ImportService(this.db);
 
   Future<int> importMultiple() async {
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker().pickFiles(
       allowMultiple: true,
       type: FileType.custom,
       allowedExtensions: ['pdf', 'docx'],
