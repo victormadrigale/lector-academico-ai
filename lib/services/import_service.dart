@@ -15,18 +15,17 @@ class ImportService {
   ImportService(this.db);
 
   Future<int> importMultiple() async {
-    final result = await FilePicker().pickFiles(
-      allowMultiple: true,
-      type: FileType.custom,
-      allowedExtensions: ['pdf', 'docx'],
-    );
-    if (result == null) return 0;
-    var imported = 0;
-    for (final file in result.files) {
-      if (file.path == null) continue;
-      await _import(File(file.path!));
-      imported++;
-    }
+    final files = await FilePicker.pickFiles(
+  type: FileType.custom,
+  allowedExtensions: ['pdf', 'docx'],
+);
+
+var imported = 0;
+for (final file in files) {
+  if (file.path == null) continue;
+  await _import(File(file.path!));
+  imported++;
+}
     return imported;
   }
 
