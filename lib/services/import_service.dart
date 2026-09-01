@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:archive/archive_io.dart';
 import 'package:file_picker/file_picker.dart';
@@ -74,7 +75,7 @@ for (final file in files) {
     }
     final documentXml = archive.findFile('word/document.xml');
     if (documentXml == null) throw StateError('DOCX sin word/document.xml');
-    final xmlText = String.fromCharCodes(documentXml.content as List<int>);
+    final xmlText = utf8.decode(documentXml.content as List<int>);
     final xml = XmlDocument.parse(xmlText);
 
     final paragraphs = <String>[];
